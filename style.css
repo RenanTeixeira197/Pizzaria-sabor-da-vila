@@ -21,7 +21,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: url(assets/imagens/pizza2.jpg);
+    background: url(assets/imagens/fundo.jpg) center, top, no-repeat;
     display: flex;
     flex-direction: column;
     min-height: 100vh; 
@@ -64,7 +64,7 @@ header{
 
 
 .hero{
-    background:url(assets/imagens/fundo.jpg) center/cover no-repeat;
+    background:url(assets/imagens/pizza1.jpg) center/cover no-repeat;
     height: 90vh;
     display: flex;
     align-items: center;
@@ -152,7 +152,9 @@ header{
 
 .sobre-content p {
     font-size: 1.1rem;
-    color: #fffdfd;
+    color: #0e0d0d;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #050505;  
 }
 
 
@@ -171,8 +173,8 @@ header{
 }
 
 #fundo{
-    background:url(assets/imagens/pizza1.jpg) center/cover no-repeat;
-    height: 90vh;
+    background:url(assets/imagens/fundo.jpg)center/bottom no-repeat;
+    height:100vw;
     margin-bottom: 20px;
 }
 
