@@ -7,6 +7,7 @@
 body{
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: rgba(245, 245, 245, 0.542);
 }
 
 header{
@@ -79,25 +80,25 @@ footer{
     margin-top: 20px;
 }
 
-/* Cardápio
 
-.menu{
+
+.menu {
     padding: 20px;
     text-align: center;
 }
 
-.menu h1{
+.menu h1 {
     margin-bottom: 20px;
-    color: #b22222
+    color: #b22222;
 }
 
-.menu-grid{
+.menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
-.menu-item{
+.menu-item {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -118,4 +119,50 @@ footer{
     margin-top: 10px;
     font-weight: bold;
     color: #8b0000;
+}
+
+.sobre {
+    padding: 20px;
+    text-align: center;
+}
+
+.sobre-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.sobre-content img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.sobre-content p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+
+.contato {
+    padding: 20px;
+    text-align: center;
+}
+
+.contato-info {
+    margin: 20px 0;
+}
+
+.contato-info p {
+    font-size: 1.1rem;
+}
+
+#fundo{
+    background:url(assets/imagens/pizza1.jpg) center/cover no-repeat;
+    height: 90vh;
+    margin-bottom:0px;
+}
+
+iframe {
+    border-radius: 8px;
+    margin-top: 20px;
 }
