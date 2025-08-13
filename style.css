@@ -214,7 +214,7 @@ main > *:last-child {
 }
 
 .pizza-card img {
-    width: 100%;
+    width: 100vh;
     display: block;
     border-radius: 10px;
 }
@@ -258,57 +258,63 @@ main > *:last-child {
     background-color: #ffdb4d;
 }
 
+/* Carrinho */
 #carrinho {
-    position: fixed;
-    top: 0;
-    right: -300px; /* começa escondido */
-    width: 300px;
-    height: 100%;
-    background: #fff8e1;
-    border-left: 2px solid #ffcc00;
-    padding: 15px;
-    box-shadow: -3px 0 6px rgba(0,0,0,0.2);
-    transition: right 0.3s ease-in-out;
-    overflow-y: auto;
-    z-index: 1000;
+    background: #fff8e1; /* Amarelo clarinho */
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 400px;
 }
 
-#carrinho.aberto {
-    right: 0;
-}
-
-#toggle-carrinho {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #ffcc00;
-    border: none;
-    border-radius: 50%;
-    padding: 12px 15px;
-    cursor: pointer;
-    font-size: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    z-index: 1001;
+#carrinho h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #d32f2f;
 }
 
 #lista-carrinho {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin-bottom: 15px;
 }
 
 #lista-carrinho li {
+    background: #ffe0b2;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid #ddd;
+    align-items: center;
+    font-weight: bold;
 }
 
-#finalizar-pedido {
-    background: #ffcc00;
+#lista-carrinho button {
+    background: transparent;
     border: none;
-    padding: 10px;
-    width: 100%;
-    font-weight: bold;
     cursor: pointer;
+    color: #d32f2f;
+    font-size: 1rem;
+}
+
+#total {
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+#finalizar {
+    display: inline-block;
+    background: #d32f2f;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+#finalizar:hover {
+    background: #b71c1c;
 }

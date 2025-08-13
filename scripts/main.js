@@ -1,13 +1,13 @@
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-const pizzaCards = document.querySelectorAll('.pizza-card');
+const pizzaCards = document.querySelectorAll('.menu-item');
 
 pizzaCards.forEach(card => {
-    if(isTouchDevice) {
+    if (isTouchDevice) {
         card.addEventListener('click', () => {
             card.classList.toggle('active');
         });
-    } else{
+    } else {
         card.addEventListener('mouseenter', () => {
             card.classList.add('active');
         });
@@ -15,95 +15,54 @@ pizzaCards.forEach(card => {
             card.classList.remove('active');
         });
     }
-})
+});
 
-const botoesCarrinho = document.querySelectorAll('.add-carrinho');
+let carrinho = [];
 
-botoesCarrinho.forEach(botao => {
-    botao.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const pizza = botao.getAttribute('data-pizza');
-        const preco = botao.getAttribute('data-preco');
-        alert(`🍕 ${pizza} adicionada ao carrinho por R$ ${preco}`);
-        //Poderá ser enviado a um array ou banco de dados
+function atualizarCarrinho() {
+    const lista = document.getElementById('lista-carrinho');
+    const totalSpan = document.getElementById('total');
+    lista.innerHTML = '';
+
+    let total = 0;
+    carrinho.forEach((item, index) => {
+        total += item.preco;
+        const li = document.createElement('li');
+        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+
+        const btnRemover = document.createElement('button');
+        btnRemover.textContent = '❌';
+        btnRemover.style.marginLeft = '10px';
+        btnRemover.onclick = () => {
+            carrinho.splice(index, 1);
+            atualizarCarrinho();
+        };
+
+        li.appendChild(btnRemover);
+        lista.appendChild(li);
     });
-});
 
-let carrinho = []
+    totalSpan.textContent = total.toFixed(2);
 
-const listaCarrinho = document.getElementById('lista-carrinho');
-const totalEl = document.getElementById('total');
-const toggleCarrinho = document.getElementById('toggle-carrinho');
-const carrinhoDiv = document.getElementById('carrinho');
+    // Criar link do WhatsApp com o pedido
+    const mensagem = carrinho.map(p => `- ${p.nome} (R$ ${p.preco.toFixed(2)})`).join('\n');
+    const numero = "5599999999999"; // Troque pelo número real
+    const link = `https://wa.me/${numero}?text=${encodeURIComponent(`Olá, gostaria de pedir:\n${mensagem}\n\nTotal: R$ ${total.toFixed(2)}`)}`;
+    document.getElementById('finalizar-pedido').href = link;
+}
 
-toggleCarrinho.addEventListener('click', () => {
-    carrinhoDiv.classList.toggle('aberto');
-});
+// Evento único para adicionar ao carrinho
+document.querySelectorAll('.add-carrinho').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation(); // Evita abrir o card
 
-document.querySelectorAll('.add-carrinho').forEach(botao => {
-    botao.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const nome = botao.getAttribute('data-pizza');
-        const preco = parseFloat(botao.getAttribute('data-preco'));
+        const pizza = this.closest('.menu-item'); // garante que pega o card certo
+        const nome = pizza.querySelector('.pizza-nome').textContent;
+        const preco = parseFloat(pizza.querySelector('.pizza-preco').textContent);
 
         carrinho.push({ nome, preco });
         atualizarCarrinho();
+
+        alert(`🍕 ${nome} adicionada ao carrinho por R$ ${preco.toFixed(2)}`);
     });
-});
-
-// Atualiza a lista e total
-function atualizarCarrinho() {
-    listaCarrinho.innerHTML = '';
-    let total = 0;
-
-    carrinho.forEach((item, index) => {
-        total += item.preco;
-
-        const li = document.createElement('li');
-        li.innerHTML = `
-            ${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}
-            <button onclick="removerItem(${index})">❌</button>
-        `;
-        listaCarrinho.appendChild(li);
-    });
-
-    totalEl.textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-}
-
-// Remove item do carrinho
-function removerItem(indice) {
-    carrinho.splice(indice, 1);
-    atualizarCarrinho();
-}
-
-// Finalizar pedido
-document.getElementById('finalizar-pedido').addEventListener('click', () => {
-    if (carrinho.length === 0) {
-        alert('Seu carrinho está vazio!');
-        return;
-    }
-    alert('Pedido finalizado! Obrigado 😋🍕');
-    carrinho = [];
-    atualizarCarrinho();
-});
-
-// Finalizar pedido via WhatsApp
-document.getElementById('finalizar-pedido').addEventListener('click', () => {
-    if (carrinho.length === 0) {
-        alert('Seu carrinho está vazio!');
-        return;
-    }
-
-    let mensagem = '🍕 *Pedido de Pizza*%0A%0A';
-    carrinho.forEach(item => {
-        mensagem += `• ${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}%0A`;
-    });
-
-    const total = carrinho.reduce((acc, item) => acc + item.preco, 0);
-    mensagem += `%0A*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
-
-    const telefone = '5599999999999'; // coloque aqui o número com DDI + DDD
-    const url = `https://wa.me/${telefone}?text=${mensagem}`;
-
-    window.open(url, '_blank');
 });
