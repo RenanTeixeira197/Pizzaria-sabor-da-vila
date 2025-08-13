@@ -16,3 +16,15 @@ pizzaCards.forEach(card => {
         });
     }
 })
+
+const botoesCarrinho = document.querySelectorAll('.add-carrinho');
+
+botoesCarrinho.forEach(botao => {
+    botao.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const pizza = botao.getAttribute('data-pizza');
+        const preco = botao.getAttribute('data-preco');
+        alert(`🍕 ${pizza} adicionada ao carrinho por R$ ${preco}`);
+        //Poderá ser enviado a um array ou banco de dados
+    })
+})

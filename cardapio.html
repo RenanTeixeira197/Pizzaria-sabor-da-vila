@@ -23,22 +23,45 @@
     <main class="menu">
         <h1>Nosso Cardápio</h1>
         
-        <div class="menu-grid">
-            <div class="menu-item">
-                <img src="assets/imagens/pizza1.jpg" alt="Pizza Margherita">
-                <h2>Pizza Margherita</h2>
-                <p>Molho de tomate, mussarela, manjericão fresco.</p>
-                <span class="price">R$ 39,90</span>
-            </div>
-            
-            <div class="menu-item">
-                <img src="assets/imagens/pizza3.jpg" alt="Pizza Pepperoni">
-                <h2>Pizza Pepperoni</h2>
-                <p>Mussarela e generosas fatias de pepperoni.</p>
-                <span class="price">R$ 44,90</span>
-            </div>
+       <section class="cardapio">
+    <div class="pizza-card">
+        <img src="imagens/pizza1.jpg" alt="Pizza Margherita">
+        <div class="pizza-info">
+            <h3>Pizza Margherita</h3>
+            <p>Molho de tomate, mussarela, manjericão fresco.</p>
+            <strong>R$ 34,90</strong>
         </div>
-    </main>
+    </div>
+
+    <div class="pizza-card">
+        <img src="imagens/pizza2.jpg" alt="Pizza Quatro Queijos">
+        <div class="pizza-info">
+            <h3>Pizza Quatro Queijos</h3>
+            <p>Mussarela, provolone, gorgonzola e parmesão.</p>
+            <strong>R$ 42,90</strong>
+        </div>
+    </div>
+
+    <div class="pizza-card">
+        <img src="imagens/pizza3.jpg" alt="Pizza Calabresa">
+        <div class="pizza-info">
+            <h3>Pizza Calabresa</h3>
+            <p>Molho de tomate, mussarela e calabresa fatiada.</p>
+            <strong>R$ 39,90</strong>
+        </div>
+    </div>
+
+    <div class="pizza-card">
+        <img src="imagens/pizza4.jpg" alt="Pizza Portuguesa">
+        <div class="pizza-info">
+            <h3>Pizza Portuguesa</h3>
+            <p>Molho de tomate, mussarela, presunto, ovos e cebola.</p>
+            <strong>R$ 44,90</strong>
+            <button class="add-carrinho" data-pizza="Portuguesa" data-preco="44.90">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+</section>
+
 
     <footer>
         <p>© 2025 Pizzaria Sabor da Vila - Todos os direitos reservados</p>
