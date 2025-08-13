@@ -189,6 +189,9 @@ footer {
     text-align: center;
     padding: 15px;
     margin-top: 0;
+    clear: both;
+    position: relative;
+    z-index: 10;
 }
 
 main > *:last-child {
@@ -253,4 +256,59 @@ main > *:last-child {
 
 .add-carrinho:hover{
     background-color: #ffdb4d;
+}
+
+#carrinho {
+    position: fixed;
+    top: 0;
+    right: -300px; /* começa escondido */
+    width: 300px;
+    height: 100%;
+    background: #fff8e1;
+    border-left: 2px solid #ffcc00;
+    padding: 15px;
+    box-shadow: -3px 0 6px rgba(0,0,0,0.2);
+    transition: right 0.3s ease-in-out;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+#carrinho.aberto {
+    right: 0;
+}
+
+#toggle-carrinho {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ffcc00;
+    border: none;
+    border-radius: 50%;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 1001;
+}
+
+#lista-carrinho {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+#lista-carrinho li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#finalizar-pedido {
+    background: #ffcc00;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
 }
