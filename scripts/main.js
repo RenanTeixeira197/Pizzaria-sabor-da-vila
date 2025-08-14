@@ -66,3 +66,4 @@ document.querySelectorAll('.add-carrinho').forEach(btn => {
         alert(`🍕 ${nome} adicionada ao carrinho por R$ ${preco.toFixed(2)}`);
     });
 });
+
