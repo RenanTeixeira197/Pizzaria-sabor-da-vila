@@ -214,7 +214,7 @@ main > *:last-child {
 }
 
 .pizza-card img {
-    width: 100vh;
+    width: 90vh;
     display: block;
     border-radius: 10px;
 }
